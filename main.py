@@ -26,8 +26,8 @@ session_file_id = getenv("INSTA_SESSIONFILE_ID") # get session file
 pattern = '^t\.me/[a-zA-Z]/[0-9]+/[0-9]+$'
 result = re.match(pattern, session_file_id)
 fl = session_file_id.split("/")
-ci = f'{fxl[-1]}'
-fi = f'{fxl[-2]}'
+ci = f'{fl[-1]}'
+fi = f'{fl[-2]}'
 fn = f'session-{username}'
 RUNNING = {}
 
