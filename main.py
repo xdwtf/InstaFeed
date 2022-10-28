@@ -36,9 +36,6 @@ bot = Client(
 )
 
 L = instaloader.Instaloader()
-f = bot.get_messages(ci,fi)
-f.download(fn)
-log.info("Session File Downloaded")
 #L.load_session_from_file(username, fn)
 scheduler = AsyncIOScheduler(timezone=str(tzlocal.get_localzone()))
 
@@ -334,6 +331,9 @@ async def main():
     await bot.start()
     scheduler.start()
     log.info(f"{bot.me.username} started!")
+    f = await bot.get_messages(ci,fi)
+    await f.download(fn)
+    log.info("Session File Downloaded")
     await idle()
 
 
