@@ -36,7 +36,7 @@ async def xD():
     fl = session_file_id.split("/")
     ci = f'{fl[-1]}'
     fi = f'{fl[-2]}'
-    f = bot.get_messages(chat_id=int(ci), message_ids=int(fi))
+    f = await bot.get_messages(chat_id=int(ci), message_id=int(fi))
     await f.download(fn)
     log.info("Session File Downloaded")
 
