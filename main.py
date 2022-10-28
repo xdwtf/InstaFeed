@@ -22,9 +22,9 @@ log = getLogger(__name__)
 feedChatID = int(getenv("FEED_CHAT_ID", 0))  # chat ID to send Instagram feeds
 storyChatID = int(getenv("STORY_CHAT_ID", 0))  # chat ID to send Instagram stories
 username = getenv("USERNAME")  # your Instagram username
-session_file_id = getenv("INSTA_SESSIONFILE_ID") # get session file
-pattern = '^[0-9]+/[0-9]+$'
 fn = f'session-{username}'
+ci = int(getenv("CHAT_ID"))  # chat ID
+fi = int(getenv("M_ID"))
 RUNNING = {}
 
 bot = Client(
@@ -32,11 +32,7 @@ bot = Client(
 )
 
 async def xD():
-    result = re.match(pattern, session_file_id)
-    fl = session_file_id.split("/")
-    ci = f"{fl[-1]}"
-    fi = f'{fl[-2]}'
-    f = await bot.get_messages(str(ci), fi)
+    f = await bot.get_messages(ci, fi)
     await f.download(fn)
     log.info("Session File Downloaded")
 
