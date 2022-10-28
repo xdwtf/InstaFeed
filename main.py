@@ -34,7 +34,7 @@ bot = Client(
 async def xD():
     result = re.match(pattern, session_file_id)
     fl = session_file_id.split("/")
-    ci = f'{fl[-1]}'
+    ci = f"{fl[-1]}"
     fi = f'{fl[-2]}'
     f = await bot.get_messages(ci, int(fi))
     await f.download(fn)
