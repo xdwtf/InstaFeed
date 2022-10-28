@@ -23,7 +23,7 @@ feedChatID = int(getenv("FEED_CHAT_ID", 0))  # chat ID to send Instagram feeds
 storyChatID = int(getenv("STORY_CHAT_ID", 0))  # chat ID to send Instagram stories
 username = getenv("USERNAME")  # your Instagram username
 session_file_id = getenv("INSTA_SESSIONFILE_ID") # get session file
-pattern = '^t\.me/[a-zA-Z]/[0-9]+/[0-9]+$'
+pattern = '^t\.me/[a-zA-Z]/-[0-9]+/[0-9]+$'
 fn = f'session-{username}'
 RUNNING = {}
 
