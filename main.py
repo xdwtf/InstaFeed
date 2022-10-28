@@ -31,7 +31,7 @@ bot = Client(
 )
 
 L = instaloader.Instaloader()
-bot.download_media(session_file_id, file_name=fn)
+bot.download_media(session_file_id, file_name=fn, in_memory=False)
 #L.load_session_from_file(username, fn)
 scheduler = AsyncIOScheduler(timezone=str(tzlocal.get_localzone()))
 
