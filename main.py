@@ -31,7 +31,7 @@ bot = Client(
     "instaFeeds", getenv("API_ID", 0), getenv("API_HASH", ""), bot_token=getenv("BOT_TOKEN", "")
 )
 
-def xD():
+async def xD():
     result = re.match(pattern, session_file_id)
     fl = session_file_id.split("/")
     ci = f'{fl[-1]}'
