@@ -322,8 +322,8 @@ async def runStory():
 
 
 async def main():
-    await bot.download_media(session_file_id, file_name=f"./{username}")
-    L.load_session_from_file(username, filename=f"./{username}")
+    await bot.download_media(session_file_id, file_name=username)
+    L.load_session_from_file(filename=username)
     await bot.start()
     scheduler.start()
     log.info(f"{bot.me.username} started!")
