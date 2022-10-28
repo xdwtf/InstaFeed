@@ -1,5 +1,6 @@
 import asyncio
 import json
+import re
 from io import BytesIO
 from os import getenv
 
@@ -22,8 +23,12 @@ feedChatID = int(getenv("FEED_CHAT_ID", 0))  # chat ID to send Instagram feeds
 storyChatID = int(getenv("STORY_CHAT_ID", 0))  # chat ID to send Instagram stories
 username = getenv("USERNAME")  # your Instagram username
 session_file_id = getenv("INSTA_SESSIONFILE_ID") # get session file
-fn = f'/session/.session-{username}'
-
+pattern = '^t\.me/[a-zA-Z]/[0-9]+/[0-9]+$'
+result = re.match(pattern, session_file_id)
+fl = session_file_id.split("/")
+ci = f'{fxl[-1]}'
+fi = f'{fxl[-2]}'
+fn = f'session-{username}'
 RUNNING = {}
 
 bot = Client(
@@ -31,7 +36,9 @@ bot = Client(
 )
 
 L = instaloader.Instaloader()
-bot.download_media(session_file_id, file_name=fn, in_memory=False)
+f = await userge.get_messages(ci,fi)
+await f.download(fn)
+log.info("Session File Downloaded")
 #L.load_session_from_file(username, fn)
 scheduler = AsyncIOScheduler(timezone=str(tzlocal.get_localzone()))
 
