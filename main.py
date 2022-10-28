@@ -24,16 +24,21 @@ storyChatID = int(getenv("STORY_CHAT_ID", 0))  # chat ID to send Instagram stori
 username = getenv("USERNAME")  # your Instagram username
 session_file_id = getenv("INSTA_SESSIONFILE_ID") # get session file
 pattern = '^t\.me/[a-zA-Z]/[0-9]+/[0-9]+$'
-result = re.match(pattern, session_file_id)
-fl = session_file_id.split("/")
-ci = f'{fl[-1]}'
-fi = f'{fl[-2]}'
 fn = f'session-{username}'
 RUNNING = {}
 
 bot = Client(
     "instaFeeds", getenv("API_ID", 0), getenv("API_HASH", ""), bot_token=getenv("BOT_TOKEN", "")
 )
+
+def xD():
+    result = re.match(pattern, session_file_id)
+    fl = session_file_id.split("/")
+    ci = f'{fl[-1]}'
+    fi = f'{fl[-2]}'
+    f = await bot.get_messages(ci,fi)
+    await f.download(fn)
+    log.info("Session File Downloaded")
 
 L = instaloader.Instaloader()
 #L.load_session_from_file(username, fn)
@@ -331,9 +336,7 @@ async def main():
     await bot.start()
     scheduler.start()
     log.info(f"{bot.me.username} started!")
-    f = await bot.get_messages(ci,fi)
-    await f.download(fn)
-    log.info("Session File Downloaded")
+    await xD()
     await idle()
 
 
