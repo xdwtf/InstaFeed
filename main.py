@@ -37,7 +37,7 @@ async def xD():
     log.info("Session File Downloaded")
 
 L = instaloader.Instaloader()
-#L.load_session_from_file(username, fn)
+L.load_session_from_file(username, fn)
 scheduler = AsyncIOScheduler(timezone=str(tzlocal.get_localzone()))
 
 
