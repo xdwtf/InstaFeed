@@ -33,7 +33,7 @@ bot = Client(
 
 async def xD():
     f = await bot.get_messages(ci, fi)
-    print(await f.download())
+    print(await f.download(in_memory=True))
     log.info("Session File Downloaded")
 
 L = instaloader.Instaloader()
