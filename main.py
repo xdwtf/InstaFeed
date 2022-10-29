@@ -31,13 +31,14 @@ bot = Client(
     "instaFeeds", getenv("API_ID", 0), getenv("API_HASH", ""), bot_token=getenv("BOT_TOKEN", "")
 )
 
+L = instaloader.Instaloader()
+
 async def xD():
     f = await bot.get_messages(ci, fi)
     print(await f.download(fn))
     log.info("Session File Downloaded")
+    L.load_session_from_file(username, fn)
 
-L = instaloader.Instaloader()
-L.load_session_from_file(username, fn)
 scheduler = AsyncIOScheduler(timezone=str(tzlocal.get_localzone()))
 
 
